@@ -1,5 +1,5 @@
 #pragma once
-void buffer(int* arr, int screen[], int x, int n)
+void buffer(int* arr, int screen[], int n)
 {
 	int* arr2 = new int[n];
 	for (int i = 0; i < n; i++)

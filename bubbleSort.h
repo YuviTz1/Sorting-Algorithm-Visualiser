@@ -7,9 +7,10 @@ class bubbleSort
 {
 public:
 
-	int n = 450;
-	int arr[450];
-	int screen[250 * 500];
+	int n = 400;
+	int arr[400];
+	//int screen[250 * 500];
+	int* screen = new int[250 * 500];
 	
 	platform sdlPlatform;
 
@@ -21,6 +22,10 @@ public:
 		}
 		clearBuffer(screen);
 	}
+	~bubbleSort()
+	{
+		delete[] screen;
+	}
 
 	void swap(int& a, int& b)
 	{
@@ -29,7 +34,7 @@ public:
 		b = temp;
 	}
 
-	void render()
+	void render(int timeDelay)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -39,8 +44,8 @@ public:
 				{
 					swap(arr[j - 1], arr[j]);
 				}
-				buffer(arr, screen, j, n);
-				sdlPlatform.update(screen);
+				buffer(arr, screen, n);
+				sdlPlatform.update(screen, timeDelay);
 				clearBuffer(screen);
 			}
 		}
